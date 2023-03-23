@@ -1,71 +1,82 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/src/widgets/placeholder.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-     
-      _counter++;
-    });
-  }
+class Lab1 extends StatelessWidget {
+  const Lab1({super.key});
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+      body: Scaffold(
+        backgroundColor: Color.fromARGB(255, 239, 239, 239),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text('Row'),
+            Row(
+              children: [
+                Container(
+                  height: 70,
+                  width: 40,
+                  color: Colors.blue,
+                ),
+                Container(
+                  height: 70,
+                  width: 40,
+                  color: Colors.red,
+                ),
+                Container(
+                  height: 70,
+                  width: 40,
+                  color: Colors.black,
+                )
+              ],
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            const Text('Column'),
+            Column(
+              children: [
+                Container(
+                  height: 70,
+                  width: 40,
+                  color: Colors.blue,
+                ),
+                Container(
+                  height: 70,
+                  width: 40,
+                  color: Colors.red,
+                ),
+                Container(
+                  height: 70,
+                  width: 40,
+                  color: Colors.black,
+                )
+              ],
             ),
+            const Text('ListView'),
+            
+               ListView.builder(
+                shrinkWrap: true,
+                  scrollDirection: Axis.vertical,
+                  itemCount: 3,
+                  itemBuilder: (context, index) {
+                    Color color;
+                    if (index == 0) {
+                      color = Colors.blue;
+                    } else if (index == 1) {
+                      color = Colors.red;
+                    } else {
+                      color = Colors.black;
+                    }
+                    return Container(
+                      height: 20,
+                      color: color,
+                    );
+                  }),
+            
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
