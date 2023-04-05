@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_lab01_20521802/pages/lab1.dart';
+import 'package:mobile_lab01_20521802/pages/lab2.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         
       ),
       debugShowCheckedModeBanner: false,
-      home: const Lab1(),
+      home: const Lab2(),
     );
   }
 }
