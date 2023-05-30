@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -25,7 +28,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -43,40 +49,20 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBXcP0Iu_zs_jl4zuBLl2iwo2mrVg0AJA8',
-    appId: '1:679409694145:web:703a79d62c45e001d8eb40',
-    messagingSenderId: '679409694145',
-    projectId: 'mobile-lab-45995',
-    authDomain: 'mobile-lab-45995.firebaseapp.com',
-    storageBucket: 'mobile-lab-45995.appspot.com',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDQ3QEOVLEMgl_7xvJOC-eYTAPfKXIhfHc',
-    appId: '1:679409694145:android:0dbd4d364ae903e6d8eb40',
-    messagingSenderId: '679409694145',
-    projectId: 'mobile-lab-45995',
-    storageBucket: 'mobile-lab-45995.appspot.com',
+    apiKey: 'AIzaSyDxwvOX3wH3TfPVxeONdqKcfvp-7yA7zoY',
+    appId: '1:973163880184:android:4dba1b78ecfa14e613250d',
+    messagingSenderId: '973163880184',
+    projectId: 'mobile-lab-7c496',
+    storageBucket: 'mobile-lab-7c496.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBV9I3j1xqGZ8gH0siMLCxH8dDbr1HrkK0',
-    appId: '1:679409694145:ios:c367265639a26b18d8eb40',
-    messagingSenderId: '679409694145',
-    projectId: 'mobile-lab-45995',
-    storageBucket: 'mobile-lab-45995.appspot.com',
-    iosClientId: '679409694145-shl3v5urn3muf6pen2ema5qc98mtrhn8.apps.googleusercontent.com',
-    iosBundleId: 'com.example.mobileLab0120521802',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBV9I3j1xqGZ8gH0siMLCxH8dDbr1HrkK0',
-    appId: '1:679409694145:ios:c367265639a26b18d8eb40',
-    messagingSenderId: '679409694145',
-    projectId: 'mobile-lab-45995',
-    storageBucket: 'mobile-lab-45995.appspot.com',
-    iosClientId: '679409694145-shl3v5urn3muf6pen2ema5qc98mtrhn8.apps.googleusercontent.com',
+    apiKey: 'AIzaSyBImMBn79i4tw0M555S_CAeqazrA-mSOrM',
+    appId: '1:973163880184:ios:6cd017ab1dc759e113250d',
+    messagingSenderId: '973163880184',
+    projectId: 'mobile-lab-7c496',
+    storageBucket: 'mobile-lab-7c496.appspot.com',
     iosBundleId: 'com.example.mobileLab0120521802',
   );
 }
