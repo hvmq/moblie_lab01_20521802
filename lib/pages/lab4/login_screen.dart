@@ -17,8 +17,8 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  TextEditingController _userName = TextEditingController();
-  TextEditingController _pass = TextEditingController();
+  final TextEditingController _userName = TextEditingController();
+  final TextEditingController _pass = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -92,16 +92,18 @@ class _LoginState extends State<Login> {
                     await Provider.of<UserProvider>(context, listen: false)
                         .getUser(_userName.text);
                     String encryptPass =
-                        MyEncryptionDecryption.encryptAES(_pass.text).base64.toString();
+                        MyEncryptionDecryption.encryptAES(_pass.text)
+                            .base64
+                            .toString();
                     if (userData.userData.isEmpty) {
-                      SnackbarFail();
+                      snackbarFail();
                     } else {
-                      if (encryptPass == userData.userData[0].pass) {
-                        Get.to(() => HomePageLab4(fullName: userData.userData[0].fullName,));
-                        print(encryptPass);
+                      if (encryptPass == userData.userData[userData.userData.length - 1].pass) {
+                        Get.to(() => HomePageLab4(
+                              fullName: userData.userData[userData.userData.length - 1].fullName,
+                            ));                      
                       } else {
-                        print(encryptPass);
-                        SnackbarFail();
+                        snackbarFail();
                       }
                     }
                   },
@@ -132,7 +134,7 @@ class _LoginState extends State<Login> {
     );
   }
 
-  void SnackbarFail() {
+  void snackbarFail() {
     Flushbar(
       message: 'Username or Password incorrect',
       duration: Duration(seconds: 2),
